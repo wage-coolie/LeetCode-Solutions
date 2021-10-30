@@ -1,10 +1,10 @@
 def climb_stairs(n)
-    if n==0 || n==1 || n==2 then return n end
-    result=[0,1,2]
-        for i in 3..n
-            result[i]=result[i-1]+result[i-2] 
-        end
-        return result[n]
+def max_depth(root)
+    if root==nil then return 0 end
+    left_height=max_depth(root.left)
+    right_height=max_depth(root.right)
+    return [left_height,right_height].max+1
+end
 end
 
 pp climb_stairs(10)

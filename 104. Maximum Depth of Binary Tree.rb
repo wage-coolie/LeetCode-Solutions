@@ -1,4 +1,4 @@
-def climb_stairs(n)
+
 def max_depth(root)
     if root==nil then return 0 end
     left_height=max_depth(root.left)

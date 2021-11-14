@@ -61,6 +61,52 @@ def find_num_of_valid_words(words, puzzles)
   end
 return answer
 
+
+
+
+USING A SEPERATE LIST
+
+def find_num_of_valid_words(words,puzzles)
+  words_dict = {} ; puzzles_dict = {}
+  for i in 0..words.length-1
+    current = words[i].split("").uniq.join("")
+    words_dict[words[i]]=[]
+    for j in 0..current.length-1
+      words_dict[words[i]].push((97-current[j].ord).abs)
+    end
+  end
+  for i in 0..puzzles.length-1
+    current = puzzles[i]
+    puzzles_dict[current]=[]
+    for i in 0..current.length-1
+      puzzles_dict[current].push((97-current[i].ord).abs)
+    end
+  end
+  char_list = ''
+  puzzles.each do |puzzle|
+    char_list = char_list+puzzle[0]
+  end
+  char_list = char_list.split('').uniq
+  list = {}
+  char_list.each do |char|
+    list[char]=[]
+    words.each do |word|
+      if word.include?(char) then list[char].push(word) end 
+    end
+  end
+  answer = []
+  for i in 0..puzzles.length-1
+    result = 0
+    list[puzzles[i][0]].each do |word|
+      if words_dict[word] - puzzles_dict[puzzles[i]] == [] then result = result+1 end
+    end
+    answer[i]=result
+  end
+  return(answer)
+end
+
+
+
 end
 
 =end

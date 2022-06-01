@@ -8,4 +8,5 @@ def restore_string(s, indices)
         result<<(s[indices.find_index(i)])
     end
     return result
+    
 end

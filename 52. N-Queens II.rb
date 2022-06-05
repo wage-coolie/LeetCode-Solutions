@@ -1,15 +1,13 @@
 
-def solve_n_queens(n)
+def total_n_queens(n)
   @ans = []
   board = []
   for i in 0..n-1 do
     board[i] = '.' * n
   end
-  pp board
   row = 0
   backtrack(board,row,n)
-  pp @ans.length
-  @ans
+  @ans,length
 end
 
 def backtrack(arr, row, n)
@@ -54,26 +52,3 @@ def is_valid(arr, row, col, n)
 end
 
 
-# def backtrack(board,row,n,posibilities={})
-#   if row == n then return @ans.push(board) end
-#   if posibilities.keys.length == 0 
-#     pp "printintg "
-#     posibilities = {"col" => [], "neg_diag" => [] }
-#   end
-#   for i in 0..n-1 do
-#     # check if it's safe to store Q on that position
-#     diag = row - i
-#     if posibilities["col"].include?(i) || posibilities['neg_diag'].include?(diag)
-#     else
-#       posibilities['neg_diag'].push(diag)
-#       posibilities['col'].push(i)
-#       board[row][i] = 'Q'
-#       backtrack(board, row + 1, n, posibilities)
-#       board[row][i] = '.'
-#       posibilities['neg_diag'].delete(diag)
-#       posibilities['col'].delete(i)
-#     end 
-#   end  
-# end
-
-pp solve_n_queens(8)
